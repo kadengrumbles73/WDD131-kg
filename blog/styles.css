@@ -19,7 +19,7 @@ header {
 header h1 {
     font-size: 2.5rem;
     color: #513846;
-    border-bottom: 2px solid #ffede0;
+    border-bottom: 2px solid #d9c2b2;
     margin: 0;
     padding: 1rem 0;
 }
@@ -31,13 +31,14 @@ nav ul {
     display: flex;
     justify-content: flex-end;
     gap: 1.5rem;
-    border-bottom: 2px solid #ffede0;
+    border-bottom: 2px solid #d9c2b2;
 }
 
 nav a {
     text-decoration: none;
     color: #b33a3a;
     font-size: 0.95rem;
+    font-weight: bold;
 }
 
 main {
@@ -54,12 +55,12 @@ main {
 
 .book-meta {
     text-align: right;
-    font-size: 0.9rem;
-    line-height: 1.5;
+    font-size: 0.95rem;
+    line-height: 1.8;
 }
 
 .stars {
-    color: #ffcc00;
+    color: #8a6d00;
 }
 
 .book-content h2 {
@@ -82,7 +83,7 @@ main {
 footer {
     text-align: center;
     padding: 2.5rem;
-    border-top: 2px solid #ffede0;
+    border-top: 2px solid #d9c2b2;
     margin-top: 4rem;
 }
 
@@ -95,7 +96,7 @@ footer {
     .book-meta {
         grid-column: 1;
         padding-right: 1.5rem;
-        border-right: 2px solid #ffede0;
+        border-right: 2px solid #d9c2b2;
     }
 
     .book-content {
