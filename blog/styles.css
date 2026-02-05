@@ -1,0 +1,105 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Palatino", "URW Palladio L", serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 1rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #513846;
+    border-bottom: 2px solid #ffede0;
+    margin: 0;
+    padding: 1rem 0;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 1rem 0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1.5rem;
+    border-bottom: 2px solid #ffede0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #b33a3a;
+    font-size: 0.95rem;
+}
+
+main {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.book-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.book-meta {
+    text-align: right;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.stars {
+    color: #ffcc00;
+}
+
+.book-content h2 {
+    color: #b33a3a;
+    font-size: 1.5rem;
+    margin-top: 0;
+}
+
+.book-content img {
+    max-width: 200px;
+    height: auto;
+    display: block;
+    margin: 1rem 0;
+}
+
+.book-content p {
+    line-height: 1.6;
+}
+
+footer {
+    text-align: center;
+    padding: 2.5rem;
+    border-top: 2px solid #ffede0;
+    margin-top: 4rem;
+}
+
+@media (min-width: 800px) {
+    .book-card {
+        grid-template-columns: 150px 1fr 150px;
+        align-items: start;
+    }
+
+    .book-meta {
+        grid-column: 1;
+        padding-right: 1.5rem;
+        border-right: 2px solid #ffede0;
+    }
+
+    .book-content {
+        grid-column: 2;
+        padding-left: 2rem;
+    }
+}
