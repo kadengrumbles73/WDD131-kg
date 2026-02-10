@@ -1,0 +1,27 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+#student-container {
+    width: 400px;
+    margin-top: 20px;
+}
+
+.student-item {
+    text-align: center;
+    padding: 12px 0;
+    border-top: 1px solid #999;
+}
+
+.student-item:last-child {
+    border-bottom: 1px solid #999;
+}
+
+#gpa-display {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-align: center;
+    width: 400px;
+}
