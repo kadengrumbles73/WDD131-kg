@@ -1,0 +1,123 @@
+:root {
+    --card-color: #d3d3d3; 
+    --card-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Container to allow card stacking */
+.card-stack {
+    position: relative;
+    width: 460px; /* Wider to accommodate both cards */
+    height: 280px;
+    margin-bottom: 20px;
+}
+
+.card {
+    background-color: var(--card-color);
+    border-radius: 10px;
+    border: 1px solid #a0a0a0;
+    box-shadow: var(--card-shadow);
+    padding: 20px;
+    position: absolute;
+    box-sizing: border-box;
+    width: 380px;
+    height: 220px;
+}
+
+/* Front card styling */
+.card-front {
+    z-index: 2;
+    top: 0;
+    left: 0;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 15px;
+}
+
+/* Back card styling offset to make CVV visible */
+.card-back {
+    z-index: 1;
+    top: 60px;
+    left: 130px; /* Offset to the right to reveal CVV */
+    padding: 0;
+}
+
+.magnetic-strip {
+    background: #000;
+    height: 45px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.cvv {
+    margin: 20px 0 0 260px;
+    width: 80px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.card-logo {
+    height: 30px;
+}
+
+.bottom-row {
+    display: flex;
+    gap: 20px;
+}
+
+.exp-inputs {
+    display: flex;
+    gap: 5px;
+}
+
+.exp-inputs input {
+    width: 45px;
+    text-align: center;
+}
+
+label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+input {
+    border: 1px solid #888;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.button-container {
+    text-align: right;
+    width: 460px;
+}
+
+button {
+    padding: 10px 30px;
+    background: #f0f0f0;
+    border: 2px solid #000;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 2px 2px 0px #000;
+}
+
+#feedback {
+    text-align: center;
+    margin-top: 15px;
+}
