@@ -1,0 +1,93 @@
+/* --- Base Mobile Styles (Default) --- */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    font-size: 18px;
+    max-width: 1280px;
+    margin: auto;
+    padding: 1em;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Navigation: Vertical stack for mobile */
+.main-nav {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Stacked */
+    gap: 10px;
+}
+
+.main-nav a {
+    display: block;
+    padding: 10px;
+    background-color: #eee;
+    text-decoration: none;
+    text-align: center;
+}
+
+/* Media Card: Stacked for mobile */
+.media-card {
+    display: flex;
+    flex-direction: column; 
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.media-card-content {
+    padding: 1rem;
+}
+
+/* Gallery: Single column for mobile */
+.gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* --- Tablet / Desktop Styles (600px and up) --- */
+@media screen and (min-width: 600px) {
+    
+    /* Horizontal Navigation */
+    .main-nav {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    /* Side-by-side Media Card (Image left, text right) */
+    .media-card-container .media-card {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .media-card-image, .media-card-content {
+        flex: 1; /* Give both sides equal width */
+    }
+
+    /* Gallery: 2-column grid using Flexbox */
+    .gallery {
+        flex-direction: row;
+        flex-wrap: wrap; /* Allows cards to wrap to the next line */
+        justify-content: space-between;
+    }
+
+    .gallery .media-card {
+        flex: 0 1 calc(50% - 10px); /* Two cards per row with gap adjustment */
+    }
+}
+
+/* --- Large Desktop (900px and up) --- */
+@media screen and (min-width: 900px) {
+    /* Gallery: 4-column grid */
+    .gallery .media-card {
+        flex: 0 1 calc(25% - 15px);
+    }
+}
