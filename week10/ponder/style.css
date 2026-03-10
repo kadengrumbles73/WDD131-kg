@@ -1,0 +1,79 @@
+:root {
+  --primary: #2e5a27;
+  --bg: #f4f7f1;
+  --card-bg: #ffffff;
+  --text: #333;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 20px;
+}
+
+.search-container {
+  max-width: 600px;
+  margin: 0 auto 40px;
+  display: flex;
+  gap: 10px;
+}
+
+input#search {
+  flex: 1;
+  padding: 12px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#hike-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hike-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Fixed image styling */
+.hike-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+}
+
+.hike-content {
+  padding: 20px;
+}
+
+.hike-tags button {
+  background: #e8f0e7;
+  color: var(--primary);
+  font-size: 0.75rem;
+  padding: 4px 12px;
+  margin: 0 5px 5px 0;
+  border: none;
+  border-radius: 20px;
+}
+
+.icon-boot { color: var(--primary); }
+.icon-empty { opacity: 0.3; }
