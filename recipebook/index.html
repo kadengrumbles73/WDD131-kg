@@ -3,27 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe Book | Apple Crisp</title>
-    
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Delicious Apple Crisp Recipe">
-    <meta property="og:description" content="A simple, classic dessert with fresh apples and a crispy oat topping.">
-    <meta property="og:url" content="https://githubusername.github.io/wdd131/recipes">
-    <meta property="og:image" content="images/apple-crisp.jpg">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Delicious Apple Crisp Recipe">
-    <meta name="twitter:description" content="A simple, classic dessert with fresh apples and a crispy oat topping.">
-    <meta name="twitter:image" content="images/apple-crisp.jpg">
-
-    <link rel="icon" href="favicon.ico">
-    <link rel="apple-touch-icon" href="images/apple-crisp.jpg">
-
+    <title>Recipe Book</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="style.css">
+    <script src="recipe.js" type="module" defer></script>
 </head>
 <body>
     <header>
@@ -32,46 +17,18 @@
             <h1>Recipe Book</h1>
         </div>
         <div class="search-area">
-            <input type="text" placeholder="Search recipes...">
-            <button><img src="images/search.svg" alt="Search"></button>
+            <input type="text" id="search-input" placeholder="Search recipes...">
+            <button id="search-button"><img src="images/search.svg" alt="Search"></button>
         </div>
     </header>
-
-    <main>
-        <article class="recipe-card">
-            <h2>Apple Crisp</h2>
-            <img src="images/apple-crisp.jpg" alt="Apple Crisp in a bowl" class="hero-img">
-            
-            <div class="recipe-details">
-                <span class="category">Dessert</span>
-                
-                <span class="rating" role="img" aria-label="Rating: 4 out of 5 stars">
-                    <span aria-hidden="true" class="icon-star">⭐</span>
-                    <span aria-hidden="true" class="icon-star">⭐</span>
-                    <span aria-hidden="true" class="icon-star">⭐</span>
-                    <span aria-hidden="true" class="icon-star">⭐</span>
-                    
-                    <span aria-hidden="true" class="icon-star-empty">☆</span>
-                </span>
-
-                <p class="description">
-                    This classic apple crisp is the perfect easy dessert for fall. 
-                    Tart apples baked with a crunchy cinnamon-oat topping.
-                </p>
-            </div>
-        </article>
-    </main>
-
+    <main id="recipe-container"></main>
     <footer>
-        <p>&copy; 2026 | Recipe Book | Your Name</p>
+        <p>&copy; 2026 | Recipe Book | Kaden Grumbles</p>
         <div class="social">
             <a href="#"><img src="images/instagram_icon.svg" alt="instagram icon"></a>
             <a href="#"><img src="images/youtube_icon.svg" alt="youtube icon"></a>
             <a href="#"><img src="images/pinterest_icon.svg" alt="pinterest icon"></a>
         </div>
-        <p>
-            <a href="https://www.flaticon.com/free-icons/recipe" title="recipe icons">Recipe icons created by Freepik - Flaticon</a>
-        </p>
     </footer>
 </body>
 </html>
