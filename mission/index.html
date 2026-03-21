@@ -1,44 +1,30 @@
-<!DOCTYPE html>
++<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BYU-Idaho Mission Statement</title>
+    <title>NFL Data Central</title>
     <link rel="stylesheet" href="style.css">
-    <script src="mission.js" defer></script>
 </head>
 <body>
-    <main class="container">
-        <header class="mission-header">
-            <h1>MISSION STATEMENT</h1>
-            <p class="school-name">BRIGHAM YOUNG UNIVERSITY-IDAHO</p>
-            <hr class="divider">
-        </header>
+    <header>
+        <div class="logo-container">
+            <img src="images/football-logo.png" alt="NFL Stats Logo" id="logo">
+            <h1>FOOTBALL DATA CENTRAL</h1>
+        </div>
+        <nav>
+            <button id="home-btn">HOME</button>
+            <button id="stats-btn">PLAYER STATS</button>
+        </nav>
+    </header>
 
-        <select>
-            <option>Choose Mode</option>
-            <option value="dark">Dark</option>
-            <option value="light">Light</option>
-        </select>  
+    <main id="main-content">
+        </main>
 
-        <section class="mission-content">
-            <p>Brigham Young University-Idaho was founded and is supported and guided by The Church of Jesus Christ of Latter-day Saints. Its mission is to develop disciples of Jesus Christ who are leaders in their homes, the Church, and their communities.</p>
-            
-            <p class="italic-text">The university does this by:</p>
+    <footer>
+        <p>&copy; <span id="current-year"></span> | Kaden Grumbles | 2026</p>\
+    </footer>
 
-            <ol class="objectives-list">
-                <li>Building testimonies of the restored gospel of Jesus Christ and fostering its principles in a wholesome academic, cultural, and social environment.</li>
-                <li>Providing a high-quality education that prepares students of diverse interests and abilities for lifelong learning and employment.</li>
-                <li>Serving as many students as possible within resource constraints.</li>
-                <li>Delivering education that is affordable for students and the Church.</li>
-            </ol>
-        </section>
-
-        <footer class="logo-footer">
-            <div class="logo">
-                <img src="byui-logo-blue.webp" alt="BYUI logo" width="200" height="100">
-            </div>
-        </footer>
-    </main>
+    <script src="script.js"></script>
 </body>
 </html>

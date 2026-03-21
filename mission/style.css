@@ -1,86 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&family=Audiowide&display=swap");
+
+:root {
+    --neon-pink: #D0008F;
+    --neon-cyan: #00F3FF;
+    --dark-void: #1A1A1D;
+    --white: #FFFFFF;
+}
+
 body {
-    background-color: #f4f4f4;
-    font-family: 'Times New Roman', Times, serif; /* Professional serif font */
-    color: #333;
-    line-height: 1.6;
+    background-color: var(--dark-void);
+    color: var(--white);
+    font-family: 'Audiowide', cursive;
+    margin: 0;
     display: flex;
-    justify-content: center;
-    padding: 50px 20px;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-.container {
-    background-color: white;
-    max-width: 800px;
-    padding: 60px 80px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-.mission-header {
-    text-align: center;
-    margin-bottom: 40px;
+header {
+    border-bottom: 2px solid var(--neon-cyan);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0 15px var(--neon-cyan);
 }
 
 h1 {
-    font-size: 2.5rem;
-    font-weight: 400;
-    letter-spacing: 2px;
-}
-
-.school-name {
-    color: #006eb6;  
-    font-size: 0.9rem;
+    font-family: 'Rajdhani', sans-serif;
     letter-spacing: 3px;
-    margin-top: 10px;
-    text-transform: uppercase;
+    margin: 0;
+    color: var(--neon-cyan);
 }
 
-.divider {
-    border: 0;
-    border-top: 1px solid #e0e0e0;
-    margin: 20px auto;
-    width: 80%;
+.logo-container img {
+    height: 50px;
+    vertical-align: middle;
+    margin-right: 15px;
 }
 
-.mission-content p {
-    margin-bottom: 25px;
-    font-size: 1.15rem;
-    text-align: justify;
+nav button {
+    background: transparent;
+    border: 1px solid var(--neon-pink);
+    color: var(--neon-pink);
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
-.italic-text {
-    font-style: italic;
-    margin-bottom: 15px;
+nav button:hover {
+    background: var(--neon-pink);
+    color: var(--white);
+    box-shadow: 0 0 10px var(--neon-pink);
 }
 
-.objectives-list {
-    margin-left: 40px;
+main {
+    flex: 1;
+    padding: 2rem;
 }
 
-.objectives-list li {
-    margin-bottom: 20px;
-    padding-left: 10px;
-    font-size: 1.1rem;
+.stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: 'Rajdhani', sans-serif;
 }
 
-img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 20%;
-    height: auto;
+.stats-table th {
+    background-color: var(--neon-pink);
+    padding: 12px;
+    text-align: left;
 }
 
-body.dark {
-    background-color: #333;
-    color: white;
+.stats-table td {
+    border-bottom: 1px solid #333;
+    padding: 10px;
 }
 
-body.dark .container {
-    background-color: #444;
-    color: white;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-}
-
-body.dark .divider {
-    border-top: 1px solid #666;
+footer {
+    text-align: center;
+    padding: 1rem;
+    border-top: 1px solid var(--neon-pink);
+    font-size: 0.8rem;
 }
