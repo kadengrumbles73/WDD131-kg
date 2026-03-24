@@ -1,0 +1,183 @@
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&family=Audiowide&display=swap");
+
+:root {
+  --primary-color: #D0008F;
+  --secondary-color: #00F3FF;
+  --accent1-color: #FFFFFF;
+  --accent2-color: #1A1A1D;
+  --heading-font: "Rajdhani", sans-serif;
+  --paragraph-font: "Audiowide", cursive;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  background-color: var(--accent2-color);
+  color: var(--accent1-color);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%; 
+  padding: 0.2em 2em;
+  background-color: #000000;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--primary-color);
+  box-shadow: 0 4px 15px rgba(208, 0, 143, 0.3);
+  height: 60px;
+  box-sizing: border-box; /* Ensures padding doesn't push it off screen */
+}
+
+.logo-container, 
+nav {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+nav {
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+header h1 {
+  flex: 2;
+  text-align: center;
+  color: var(--primary-color);
+  margin: 0;
+  font-family: var(--heading-font);
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  text-shadow: 0 0 10px rgba(208, 0, 143, 0.5);
+}
+
+#logo {
+  max-height: 40px;
+  width: auto;
+}
+
+nav button {
+  padding: 0.4em 1.2em;
+  cursor: pointer;
+  border: 1px solid var(--secondary-color);
+  font-family: var(--heading-font);
+  font-weight: bold;
+  font-size: 0.8rem;
+  color: var(--secondary-color);
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+
+nav button:hover {
+  color: var(--accent2-color);
+  background-color: var(--secondary-color);
+  box-shadow: 0 0 15px var(--secondary-color);
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px 2em;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.hero {
+  text-align: center;
+  padding: 2em 0;
+  animation: fadeIn 0.8s ease-in; 
+}
+
+.card {
+  background-color: #000;
+  border: 1px solid var(--primary-color);
+  padding: 1.5em;
+  margin-top: 2em;
+  box-shadow: 0 0 15px rgba(208, 0, 143, 0.2);
+  border-left: 5px solid var(--primary-color); 
+}
+
+.card h3 {
+  margin-top: 0;
+  color: var(--secondary-color);
+  text-transform: uppercase;
+}
+footer {
+  margin-top: auto;
+  padding: 1.5em;
+  text-align: center;
+  font-family: var(--heading-font);
+  color: var(--primary-color);
+  border-top: 1px solid #333;
+}
+
+.stats-container {
+  padding: 1em;
+  overflow-x: auto; /* Scrollbar for mobile */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--heading-font);
+  background-color: rgba(0, 0, 0, 0.5);
+  margin-top: 1em;
+}
+
+th {
+  background-color: var(--primary-color);
+  color: white;
+  text-align: left;
+  padding: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid #333;
+}
+
+/* striped rows for better readability*/
+tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.05); 
+}
+
+tr:hover {
+  background-color: rgba(0, 243, 255, 0.1); 
+  color: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    height: auto;
+    padding: 1em;
+  }
+  
+  .logo-container, nav {
+    flex: none;
+    width: 100%;
+    justify-content: center;
+  }
+
+  header h1 {
+    order: -1;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+}
