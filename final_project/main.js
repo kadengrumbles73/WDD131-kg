@@ -24,11 +24,21 @@ const NFL_QBs = [
 
 const homeHTML = `
     <section class="hero">
-        <h2>NFL DATA CENTER</h2>
-        <p>Track stats for the top stars of NFL.</p>
-        <div class="card">
-            <h3>Recent Updates</h3>
-            <p>2025 stats for top 15 quarterbacks are now live!</p>
+        <div class="hero-content">
+            <h2>Quick NFL Stats</h2>
+            <p>Welcome to the NFL Data Center. I provide quick simple stats for the league's quarterbacks. Get a quick summary of who is passing the best.</p>
+            <button onclick="document.getElementById('stats-btn').click()" class="cta-btn">VIEW LIVE STATS</button>
+        </div>
+
+        <div class="features-grid">
+            <div class="card">
+                <h3>Simple Stat Tracking</h3>
+                <p>Simple yardage and TD-to-INT ratios for the starting QBs.</p>
+            </div>
+            <div class="card">
+                <h3>Performance Tiers</h3>
+                <p>Our proprietary logic categorizes players from "Starter" to "MVP Caliber" based on seasonal yardage.</p>
+            </div>
         </div>
     </section>
 `;
