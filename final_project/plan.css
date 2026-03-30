@@ -66,7 +66,7 @@ header h1 {
   width: auto;
 }
 
-nav button {
+button {
   padding: 0.4em 1.2em;
   cursor: pointer;
   border: 1px solid var(--secondary-color);
@@ -78,7 +78,7 @@ nav button {
   transition: all 0.3s ease;
 }
 
-nav button:hover {
+button:hover {
   color: var(--accent2-color);
   background-color: var(--secondary-color);
   box-shadow: 0 0 15px var(--secondary-color);

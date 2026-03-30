@@ -1,9 +1,9 @@
-
 const mainContent = document.getElementById('main-content');
 const homeBtn = document.getElementById('home-btn');
 const statsBtn = document.getElementById('stats-btn');
 
-// stats data
+let currentSearchTerm = "";
+
 const NFL_QBs = [
     {name: "Matthew Stafford", team: "LAR", yards: 4707, tds: 46, ints: 8, picture: "images/matthewstafford.png"},
     {name: "Jared Goff", team: "DET", yards: 4564, tds: 34, ints: 8, picture: "images/jaredgoff.png"},
@@ -20,16 +20,15 @@ const NFL_QBs = [
     {name: "Jordan Love", team: "GB", yards: 3381, tds: 23, ints: 6, picture: "images/jordanlove.png"},
     {name: "Jacoby Brissett", team: "ARI", yards: 3366, tds: 23, ints: 8, picture: "images/jacobybrissett.png"},
     {name: "Aaron Rodgers", team: "PIT", yards: 3322, tds: 24, ints: 7, picture: "images/aaronrodgers.png"}
-]
+];
 
 const homeHTML = `
     <section class="hero">
         <div class="hero-content">
             <h2>Quick NFL Stats</h2>
             <p>Welcome to the NFL Data Center. I provide quick simple stats for the league's quarterbacks. Get a quick summary of who is passing the best.</p>
-            <button onclick="document.getElementById('stats-btn').click()" class="cta-btn">VIEW LIVE STATS</button>
+            <button id="cta-stats-btn" class="stat-btn">VIEW STATS</button>
         </div>
-
         <div class="features-grid">
             <div class="card">
                 <h3>Simple Stat Tracking</h3>
@@ -44,22 +43,24 @@ const homeHTML = `
 `;
 
 function showStats() {
-    const playerRows = NFL_QBs.map(player => {
-        // TDs to show sill level
+    const filteredQBs = NFL_QBs.filter(player => 
+        player.name.toLowerCase().includes(currentSearchTerm.toLowerCase()) ||
+        player.team.toLowerCase().includes(currentSearchTerm.toLowerCase())
+    );
+
+    const playerRows = filteredQBs.map(player => {
         let performanceTier;
         if (player.yards >= 4200) {
             performanceTier = "MVP Caliber";
-        } else if (player.yards >=  3700) {
+        } else if (player.yards >= 3700) {
             performanceTier = "Elite";
         } else {
-            performanceTier = "STARTER";
+            performanceTier = "Starter";
         }
 
         return `
             <tr>
-                <td>
-                    <img src="${player.picture}" alt="${player.name}" class="player-photo" style="width:50px; height:50px; border-radius:50%;">
-                </td>
+                <td><img src="${player.picture}" alt="${player.name}" class="player-photo" style="width:40px; height:40px; border-radius:50%; border: 1px solid var(--secondary-color);"></td>
                 <td>${player.name}</td>
                 <td>${player.team}</td>
                 <td>${player.yards}</td>
@@ -73,10 +74,13 @@ function showStats() {
     const statsTableHTML = `
         <section class="stats-container">
             <h2>2026 PASSING LEADERS</h2>
+            <div class="search-bar">
+                <input type="text" id="player-search" placeholder="Search by name or team..." value="${currentSearchTerm}">
+            </div>
             <table>
                 <thead>
                     <tr>
-                        <th>Picture</th>
+                        <th>Photo</th>
                         <th>Player</th>
                         <th>Team</th>
                         <th>Yards</th>
@@ -84,27 +88,45 @@ function showStats() {
                         <th>INTs</th>
                         <th>Status</th>
                     </tr>
-                </thead>
+                </thead> 
                 <tbody>
-                    ${playerRows}
+                    ${playerRows.length > 0 ? playerRows : '<tr><td colspan="7" style="text-align:center;">No players found</td></tr>'}
                 </tbody>
             </table>
         </section>
     `;
     
     renderPage(statsTableHTML);
+
+    const searchInput = document.getElementById('player-search');
+    if (searchInput) {
+        searchInput.focus();
+        searchInput.setSelectionRange(currentSearchTerm.length, currentSearchTerm.length);
+        searchInput.addEventListener('input', (e) => {
+            currentSearchTerm = e.target.value;
+            showStats();
+        });
+    }
 }
 
 function renderPage(content) {
     mainContent.innerHTML = content;
+    const ctaBtn = document.getElementById('cta-stats-btn');
+    if (ctaBtn) {
+        ctaBtn.addEventListener('click', () => {
+            currentSearchTerm = "";
+            showStats();
+        });
+    }
 }
 
-homeBtn.addEventListener('click', function() {
+homeBtn.addEventListener('click', () => {
+    currentSearchTerm = "";
     renderPage(homeHTML);
 });
 
-statsBtn.addEventListener('click', function() {
-    showStats(); 
+statsBtn.addEventListener('click', () => {
+    showStats();
 });
 
-renderPage(homeHTML); // open home page first
+renderPage(homeHTML);
