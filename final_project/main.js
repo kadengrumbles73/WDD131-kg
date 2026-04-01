@@ -22,111 +22,148 @@ const NFL_QBs = [
     {name: "Aaron Rodgers", team: "PIT", yards: 3322, tds: 24, ints: 7, picture: "images/aaronrodgers.png"}
 ];
 
-const homeHTML = `
-    <section class="hero">
-        <div class="hero-content">
-            <h2>Quick NFL Stats</h2>
-            <p>Welcome to the NFL Data Center. I provide quick simple stats for the league's quarterbacks. Get a quick summary of who is passing the best.</p>
-            <button id="cta-stats-btn" class="stat-btn">VIEW STATS</button>
-        </div>
-        <div class="features-grid">
-            <div class="card">
-                <h3>Simple Stat Tracking</h3>
-                <p>Simple yardage and TD-to-INT ratios for the starting QBs.</p>
-            </div>
-            <div class="card">
-                <h3>Performance Tiers</h3>
-                <p>Our proprietary logic categorizes players from "Starter" to "MVP Caliber" based on seasonal yardage.</p>
-            </div>
-        </div>
-    </section>
-`;
+function renderHome() {
+    mainContent.replaceChildren();
+
+    const section = document.createElement('section');
+    section.className = 'hero';
+
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'hero-content';
+
+    const h2 = document.createElement('h2');
+    h2.textContent = 'Quick NFL Stats';
+    
+    const p = document.createElement('p');
+    p.textContent = "Welcome to the NFL Data Center. I provide quick simple stats for the league's quarterbacks. Get a quick summary of who is passing the best.";
+
+    const btn = document.createElement('button');
+    btn.id = 'cta-stats-btn';
+    btn.className = 'stat-btn';
+    btn.textContent = 'VIEW STATS';
+    btn.onclick = () => {
+        currentSearchTerm = "";
+        showStats();
+    };
+
+    contentDiv.append(h2, p, btn);
+
+    const grid = document.createElement('div');
+    grid.className = 'features-grid';
+
+    const cardData = [
+        {h: "Simple Stat Tracking", p: "Simple yardage and TD-to-INT ratios for the starting QBs."},
+        {h: "Performance Tiers", p: "Our proprietary logic categorizes players from 'Starter' to 'MVP Caliber' based on seasonal yardage."}
+    ];
+
+    cardData.forEach(data => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        const ch3 = document.createElement('h3');
+        ch3.textContent = data.h;
+        const cp = document.createElement('p');
+        cp.textContent = data.p;
+        card.append(ch3, cp);
+        grid.appendChild(card);
+    });
+
+    section.append(contentDiv, grid);
+    mainContent.appendChild(section);
+}
 
 function showStats() {
+    mainContent.replaceChildren();
+
     const filteredQBs = NFL_QBs.filter(player => 
         player.name.toLowerCase().includes(currentSearchTerm.toLowerCase()) ||
         player.team.toLowerCase().includes(currentSearchTerm.toLowerCase())
     );
 
-    const playerRows = filteredQBs.map(player => {
-        let performanceTier;
-        if (player.yards >= 4200) {
-            performanceTier = "MVP Caliber";
-        } else if (player.yards >= 3700) {
-            performanceTier = "Elite";
-        } else {
-            performanceTier = "Starter";
+    const section = document.createElement('section');
+    section.className = 'stats-container';
+
+    const h2 = document.createElement('h2');
+    h2.textContent = '2026 PASSING LEADERS';
+
+    const searchDiv = document.createElement('div');
+    searchDiv.className = 'search-bar';
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.id = 'player-search';
+    input.placeholder = 'Search by name or team...';
+    input.value = currentSearchTerm;
+    input.oninput = (e) => {
+        currentSearchTerm = e.target.value;
+        showStats();
+        const refocused = document.getElementById('player-search');
+        if (refocused) {
+            refocused.focus();
+            refocused.setSelectionRange(currentSearchTerm.length, currentSearchTerm.length);
         }
+    };
+    searchDiv.appendChild(input);
 
-        return `
-            <tr>
-                <td><img src="${player.picture}" alt="${player.name}" class="player-photo" style="width:40px; height:40px; border-radius:50%; border: 1px solid var(--secondary-color);"></td>
-                <td>${player.name}</td>
-                <td>${player.team}</td>
-                <td>${player.yards}</td>
-                <td>${player.tds}</td>
-                <td>${player.ints}</td>
-                <td>${performanceTier}</td>
-            </tr>
-        `;
-    }).join('');
+    const table = document.createElement('table');
+    const thead = document.createElement('thead');
+    const headerRow = document.createElement('tr');
+    ['Photo', 'Player', 'Team', 'Yards', 'TDs', 'INTs', 'Status'].forEach(text => {
+        const th = document.createElement('th');
+        th.textContent = text;
+        headerRow.appendChild(th);
+    });
+    thead.appendChild(headerRow);
 
-    const statsTableHTML = `
-        <section class="stats-container">
-            <h2>2026 PASSING LEADERS</h2>
-            <div class="search-bar">
-                <input type="text" id="player-search" placeholder="Search by name or team..." value="${currentSearchTerm}">
-            </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Photo</th>
-                        <th>Player</th>
-                        <th>Team</th>
-                        <th>Yards</th>
-                        <th>TDs</th>
-                        <th>INTs</th>
-                        <th>Status</th>
-                    </tr>
-                </thead> 
-                <tbody>
-                    ${playerRows.length > 0 ? playerRows : '<tr><td colspan="7" style="text-align:center;">No players found</td></tr>'}
-                </tbody>
-            </table>
-        </section>
-    `;
-    
-    renderPage(statsTableHTML);
+    const tbody = document.createElement('tbody');
 
-    const searchInput = document.getElementById('player-search');
-    if (searchInput) {
-        searchInput.focus();
-        searchInput.setSelectionRange(currentSearchTerm.length, currentSearchTerm.length);
-        searchInput.addEventListener('input', (e) => {
-            currentSearchTerm = e.target.value;
-            showStats();
+    if (filteredQBs.length === 0) {
+        const row = document.createElement('tr');
+        const td = document.createElement('td');
+        td.colSpan = 7;
+        td.style.textAlign = 'center';
+        td.textContent = 'No players found';
+        row.appendChild(td);
+        tbody.appendChild(row);
+    } else {
+        filteredQBs.forEach(player => {
+            const row = document.createElement('tr');
+
+            const tdPhoto = document.createElement('td');
+            const img = document.createElement('img');
+            img.src = player.picture;
+            img.alt = player.name;
+            img.className = 'player-photo';
+            img.style.width = '40px';
+            img.style.height = '40px';
+            img.style.borderRadius = '50%';
+            tdPhoto.appendChild(img);
+
+            let tier = "Starter";
+            if (player.yards >= 4200) tier = "MVP Caliber";
+            else if (player.yards >= 3700) tier = "Elite";
+
+            row.appendChild(tdPhoto);
+            [player.name, player.team, player.yards, player.tds, player.ints, tier].forEach(val => {
+                const td = document.createElement('td');
+                td.textContent = val;
+                row.appendChild(td);
+            });
+
+            tbody.appendChild(row);
         });
     }
-}
 
-function renderPage(content) {
-    mainContent.innerHTML = content;
-    const ctaBtn = document.getElementById('cta-stats-btn');
-    if (ctaBtn) {
-        ctaBtn.addEventListener('click', () => {
-            currentSearchTerm = "";
-            showStats();
-        });
-    }
+    table.append(thead, tbody);
+    section.append(h2, searchDiv, table);
+    mainContent.appendChild(section);
 }
 
 homeBtn.addEventListener('click', () => {
     currentSearchTerm = "";
-    renderPage(homeHTML);
+    renderHome();
 });
 
 statsBtn.addEventListener('click', () => {
     showStats();
 });
 
-renderPage(homeHTML);
+renderHome();
